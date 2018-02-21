@@ -13,7 +13,6 @@ public class VendingMachineTest {
 	@Before
 	public void setUp() throws Exception {
 		VM = new VendingMachine();
-		VendingMachineItem vmi = new VendingMachineItem("Chips", 1);
 	}
 
 	@After
@@ -40,8 +39,7 @@ public class VendingMachineTest {
 	public void testAddItem_slot_full() {
 		VendingMachineItem vmi = new VendingMachineItem("Chips", 1);
 		VendingMachineItem vmi2 = new VendingMachineItem("Cookies", 1);
-		VM.addItem(vmi, "A");
-		VM.addItem(vmi2, "A");
+		VM.addItem(vmi, "A"); VM.addItem(vmi2, "A");
 		assertNotEquals(vmi2, VM.getItem("A"));
 	}
 
@@ -52,9 +50,7 @@ public class VendingMachineTest {
 	@Test
 	public void testRemoveItem_slot_full() {
 		VendingMachineItem vmi = new VendingMachineItem("Chips", 1); 
-		VM.addItem(vmi, "A");
-		
-		VM.removeItem("A");
+		VM.addItem(vmi, "A"); VM.removeItem("A");
 		assertNotSame(vmi, VM.getItem("A"));
 	}
 	
@@ -105,7 +101,6 @@ public class VendingMachineTest {
 		VendingMachineItem vmi = new VendingMachineItem("Chips", 1.0);
 		VM.addItem(vmi, "A");
 		VM.balance = 2.0;
-		
 		assertTrue(VM.makePurchase("A"));
 	}
 	
