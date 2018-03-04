@@ -1,15 +1,20 @@
-package edu.towson.cis.cosc442.project2.fibonacci;
+package edu.towson.cis.cosc442.project3.jUnitTesting;
 
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class VendingMachineTest {
 	
 	public static VendingMachine VM;
 
+	@Rule 
+	public ExpectedException thrown= ExpectedException.none();
+	
 	@Before
 	public void setUp() throws Exception {
 		VM = new VendingMachine();
@@ -61,6 +66,8 @@ public class VendingMachineTest {
 	@Test(expected = Exception.class)
 	public void testRemoveItem_slot_empty() {
 		VM.removeItem("A");
+		thrown.expect(Exception.class);
+	
 	}
 
 	/*
